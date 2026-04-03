@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pauwa Bakery — Hi-Fi Design · Pokhara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — PAUWA BAKERY
+   Brand: Warm, artisanal, premium local
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* Brand Palette */
+  --ink:        #1C1410;
+  --ink-80:     #3A2E28;
+  --ink-50:     #8C7B70;
+  --ink-20:     #D6CFC9;
+  --ink-08:     #F2EDEA;
+  --cream:      #FBF7F2;
+  --cream-warm: #F5EDE2;
+  --white:      #FFFFFF;
+
+  /* Primary Accent */
+  --brick:      #C0392B;
+  --brick-dark: #9A2D22;
+  --brick-light:#FBEDEB;
+
+  /* Secondary */
+  --saffron:    #D4811A;
+  --saffron-lt: #FEF3E2;
+  --forest:     #2D6A4F;
+  --forest-lt:  #EAF4EE;
+  --slate:      #1E4D8C;
+  --slate-lt:   #EBF1FA;
+
+  /* Neutrals */
+  --border:     #E8DDD5;
+  --shadow:     rgba(28,20,16,.12);
+  --shadow-md:  rgba(28,20,16,.18);
+  --shadow-lg:  rgba(28,20,16,.24);
+
+  /* Typography Scale */
+  --display:    'Cormorant Garamond', serif;
+  --body:       'DM Sans', sans-serif;
+  --mono:       'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  background: #EEEAE5;
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── MASTER NAV ── */
+.master-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--ink);
+  display: flex; align-items: center;
+  padding: 0 40px; gap: 2px;
+  border-bottom: 2px solid var(--brick);
+  height: 52px;
+}
+.master-nav-logo {
+  font-family: var(--display);
+  font-size: 18px; font-weight: 600;
+  color: var(--cream); margin-right: 28px;
+  letter-spacing: .02em;
+}
+.master-nav-logo em { color: var(--brick); font-style: italic; }
+.master-nav a {
+  color: var(--ink-20); text-decoration: none;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: 0 14px; height: 52px;
+  display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px; transition: all .2s;
+}
+.master-nav a:hover, .master-nav a.active {
+  color: var(--cream); border-bottom-color: var(--brick);
+}
+.master-nav-badge {
+  margin-left: auto;
+  background: var(--brick); color: var(--white);
+  font-size: 9px; font-weight: 700;
+  padding: 4px 10px; border-radius: 2px;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* ── SECTION HEADERS ── */
+.section-header {
+  background: var(--ink);
+  padding: 56px 48px 48px;
+  position: relative; overflow: hidden;
+}
+.section-header::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 30%; height: 100%;
+  background: repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(192,57,43,.05) 20px,rgba(192,57,43,.05) 21px);
+}
+.sh-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--brick); margin-bottom: 10px;
+}
+.sh-title {
+  font-family: var(--display);
+  font-size: clamp(28px,3.5vw,44px);
+  color: var(--cream); line-height: 1.1;
+  margin-bottom: 10px; font-weight: 600;
+}
+.sh-sub {
+  font-size: 14px; color: var(--ink-50);
+  max-width: 560px; line-height: 1.7;
+}
+
+/* ── TABS ── */
+.tab-bar {
+  display: flex; gap: 2px; flex-wrap: wrap;
+  margin-bottom: 36px;
+  background: var(--ink); padding: 3px;
+  border-radius: 4px; width: fit-content;
+}
+.tab-btn {
+  padding: 9px 20px; font-size: 11px;
+  font-weight: 600; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-50);
+  cursor: pointer; border: none; background: transparent;
+  border-radius: 3px; transition: all .15s; font-family: var(--body);
+}
+.tab-btn.active { background: var(--brick); color: var(--white); }
+.tab-btn:hover:not(.active) { color: var(--cream); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ══════════════════════════════════════════
+   MOBILE HI-FI SYSTEM
+══════════════════════════════════════════ */
+.mobile-showcase {
+  padding: 48px;
+  background: linear-gradient(135deg, #F5EDE2 0%, #EDE0D0 100%);
+}
+.mobile-grid {
+  display: flex; flex-wrap: wrap; gap: 32px;
+  justify-content: flex-start; align-items: flex-start;
+}
+.mobile-unit { flex-shrink: 0; text-align: center; }
+.mobile-unit-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-80); margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.mobile-unit-label span {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--brick); font-weight: 500;
+}
+
+/* Phone hardware */
+.phone {
+  width: 220px;
+  background: var(--ink);
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 20px 60px var(--shadow-lg),
+    0 4px 12px var(--shadow);
+  position: relative;
+}
+.phone-notch {
+  width: 72px; height: 7px;
+  background: #0A0806; border-radius: 4px;
+  margin: 0 auto 10px;
+}
+.phone-screen {
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--cream);
+  position: relative;
+}
+.phone-home-bar {
+  width: 52px; height: 4px;
+  background: rgba(255,255,255,.15);
+  border-radius: 2px; margin: 10px auto 0;
+}
+
+/* ── MOBILE STATUS BAR ── */
+.m-status {
+  height: 20px;
+  background: var(--ink);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+}
+.m-status-time {
+  font-family: var(--mono); font-size: 8px;
+  font-weight: 500; color: var(--white);
+}
+.m-status-icons { display: flex; gap: 3px; align-items: center; }
+.m-status-icon { height: 7px; border-radius: 1px; background: rgba(255,255,255,.7); }
+
+/* ── MOBILE NAV BAR ── */
+.m-nav {
+  background: var(--white);
+  padding: 10px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.m-nav-logo {
+  font-family: var(--display);
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); letter-spacing: .02em;
+}
+.m-nav-logo em { color: var(--brick); font-style: italic; }
+.m-nav-icons { display: flex; gap: 8px; }
+.m-nav-icon {
+  width: 30px; height: 30px;
+  background: var(--ink-08);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.m-nav-icon svg { width: 14px; height: 14px; }
+
+/* ── MOBILE BOTTOM NAV ── */
+.m-bottom-nav {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  display: flex;
+  padding: 6px 0 8px;
+}
+.m-bnav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 2px;
+}
+.m-bnav-icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+.m-bnav-icon svg { width: 16px; height: 16px; }
+.m-bnav-label {
+  font-size: 8px; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.m-bnav-item.active .m-bnav-label { color: var(--brick); }
+.m-bnav-item:not(.active) .m-bnav-label { color: var(--ink-50); }
+.m-bnav-item.active .m-bnav-icon svg { stroke: var(--brick); }
+.m-bnav-item:not(.active) .m-bnav-icon svg { stroke: var(--ink-50); }
+
+/* ── MOBILE COMPONENTS ── */
+.m-hero-img {
+  width: 100%; height: 110px;
+  object-fit: cover; display: block;
+}
+.m-search {
+  margin: 10px 12px;
+  background: var(--ink-08);
+  border-radius: 10px;
+  height: 36px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+}
+.m-search svg { width: 14px; height: 14px; stroke: var(--ink-50); flex-shrink: 0; }
+.m-search-text { font-size: 11px; color: var(--ink-50); }
+
+.m-chips { display: flex; gap: 6px; padding: 0 12px 10px; overflow: hidden; }
+.m-chip {
+  height: 28px; padding: 0 12px; border-radius: 14px;
+  font-size: 10px; font-weight: 600; letter-spacing: .04em;
+  white-space: nowrap; display: flex; align-items: center;
+}
+.m-chip.active { background: var(--ink); color: var(--white); }
+.m-chip.off { background: var(--ink-08); color: var(--ink-80); border: 1px solid var(--border); }
+
+.m-section-hd {
+  padding: 6px 12px 4px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.m-section-hd h3 {
+  font-family: var(--display);
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.m-section-hd a { font-size: 10px; font-weight: 600; color: var(--brick); letter-spacing: .05em; }
+
+/* product card – mobile */
+.m-cards { display: flex; gap: 10px; padding: 4px 12px 12px; }
+.m-card {
+  flex: 1; background: var(--white);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+}
+.m-card-img { width: 100%; height: 80px; object-fit: cover; display: block; }
+.m-card-body { padding: 8px 9px 9px; }
+.m-card-tag {
+  display: inline-block; font-size: 7px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px;
+}
+.m-card-tag.fresh { background: var(--forest-lt); color: var(--forest); }
+.m-card-tag.nut-free { background: var(--saffron-lt); color: var(--saffron); }
+.m-card-name { font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 1px; line-height: 1.3; }
+.m-card-sub { font-size: 9px; color: var(--ink-50); margin-bottom: 6px; }
+.m-card-foot { display: flex; align-items: center; justify-content: space-between; }
+.m-card-price { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); }
+.m-add-btn {
+  width: 24px; height: 24px; background: var(--ink);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center;
+}
+.m-add-btn svg { width: 12px; height: 12px; stroke: var(--white); }
+
+/* item list row */
+.m-item-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.m-item-thumb {
+  width: 54px; height: 54px; border-radius: 10px;
+  object-fit: cover; flex-shrink: 0;
+}
+.m-item-info { flex: 1; }
+.m-item-name { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.m-item-sub { font-size: 10px; color: var(--ink-50); margin-bottom: 4px; }
+.m-item-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.m-item-act { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.m-item-price { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); }
+
+/* full image */
+.m-full-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+
+/* detail body */
+.m-det { padding: 12px 14px; }
+.m-det-title { font-family: var(--display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 2px; line-height: 1.2; }
+.m-det-sub { font-size: 10px; color: var(--ink-50); margin-bottom: 8px; }
+.m-det-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+.m-det-badge {
+  height: 20px; padding: 0 8px; border-radius: 4px;
+  font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  display: flex; align-items: center;
+}
+.m-det-badge.f { background: var(--forest-lt); color: var(--forest); }
+.m-det-badge.a { background: var(--saffron-lt); color: var(--saffron); }
+.m-det-badge.n { background: var(--slate-lt); color: var(--slate); }
+.m-det-price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.m-det-price { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--brick); }
+.m-det-section-t { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-50); margin-bottom: 6px; }
+.m-ing-text { font-size: 10px; color: var(--ink-80); line-height: 1.6; margin-bottom: 8px; }
+.m-opts { display: flex; gap: 5px; margin-bottom: 10px; }
+.m-opt {
+  flex: 1; height: 30px; border-radius: 8px;
+  font-size: 10px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--border);
+}
+.m-opt.on { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.m-opt.off { background: var(--white); color: var(--ink-80); }
+.m-cta {
+  width: 100%; height: 44px; background: var(--brick);
+  border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; gap: 6px;
+}
+.m-cta span { font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: .04em; }
+
+/* cart */
+.m-cart-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.m-cart-thumb { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.m-cart-info { flex: 1; }
+.m-cart-name { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.m-cart-price { font-size: 11px; color: var(--brick); font-weight: 600; }
+.m-qty { display: flex; align-items: center; gap: 0; }
+.m-qty-btn {
+  width: 26px; height: 26px; background: var(--ink-08);
+  border-radius: 6px; display: flex; align-items: center;
+  justify-content: center; font-size: 14px; color: var(--ink-80); font-weight: 600;
+}
+.m-qty-val {
+  width: 28px; height: 26px; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: var(--ink);
+}
+
+/* sub banner */
+.m-sub-ban {
+  margin: 8px 12px;
+  background: linear-gradient(135deg, var(--saffron-lt), #FFF8EC);
+  border: 1px solid var(--saffron);
+  border-left: 4px solid var(--saffron);
+  border-radius: 10px; padding: 10px 12px;
+}
+.m-sub-ban-t { font-size: 11px; font-weight: 700; color: var(--saffron); margin-bottom: 2px; }
+.m-sub-ban-s { font-size: 9px; color: var(--ink-80); margin-bottom: 6px; }
+.m-sub-ban-btn {
+  display: inline-flex; height: 22px; padding: 0 10px;
+  background: var(--saffron); border-radius: 5px;
+  font-size: 9px; font-weight: 700; color: var(--white);
+  text-transform: uppercase; letter-spacing: .06em; align-items: center;
+}
+
+/* summary */
+.m-sum { margin: 8px 12px; background: var(--ink-08); border-radius: 10px; padding: 10px 12px; }
+.m-sum-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.m-sum-label { font-size: 11px; color: var(--ink-50); }
+.m-sum-val { font-size: 11px; font-weight: 600; color: var(--ink); }
+.m-sum-row.total .m-sum-label { font-size: 12px; font-weight: 700; color: var(--ink); }
+.m-sum-row.total .m-sum-val { font-size: 14px; font-weight: 700; color: var(--brick); font-family: var(--display); }
+
+/* pay method */
+.m-pay-method {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border: 1.5px solid var(--border);
+  border-radius: 10px; margin: 6px 12px;
+  background: var(--white);
+}
+.m-pay-method.active { border-color: var(--ink); background: var(--ink-08); }
+.m-pay-logo {
+  width: 36px; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; letter-spacing: .04em;
+}
+.m-pay-logo.esewa { background: #60BB46; color: white; }
+.m-pay-logo.khalti { background: #5C2D8A; color: white; }
+.m-pay-logo.cod { background: var(--ink-20); color: var(--ink-80); }
+.m-pay-name { font-size: 11px; font-weight: 600; color: var(--ink); flex: 1; }
+.m-pay-radio {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--border);
+}
+.m-pay-radio.on { border-color: var(--brick); background: var(--brick); position: relative; }
+.m-pay-radio.on::after {
+  content: ''; position: absolute; inset: 3px;
+  background: white; border-radius: 50%;
+}
+
+/* confirmation */
+.m-conf-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--forest-lt); border: 2px solid var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  margin: 16px auto 10px; font-size: 26px;
+}
+.m-conf-title {
+  font-family: var(--display); font-size: 18px;
+  font-weight: 700; color: var(--ink); text-align: center; margin-bottom: 2px;
+}
+.m-conf-sub { font-size: 10px; color: var(--ink-50); text-align: center; margin-bottom: 10px; }
+.m-oid-box {
+  margin: 0 12px 8px;
+  background: var(--cream-warm); border-radius: 10px;
+  padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;
+  border: 1px solid var(--border);
+}
+.m-oid-label { font-size: 8px; font-weight: 700; color: var(--ink-50); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+.m-oid-val { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--brick); }
+.m-copy-btn {
+  height: 24px; padding: 0 10px; background: var(--ink);
+  border-radius: 6px; font-size: 8px; font-weight: 700;
+  color: var(--white); text-transform: uppercase; letter-spacing: .06em;
+  display: inline-flex; align-items: center;
+}
+.m-pickup-box {
+  margin: 0 12px 8px;
+  background: var(--forest-lt); border-radius: 10px;
+  padding: 10px 12px; border-left: 3px solid var(--forest);
+}
+.m-pickup-t { font-size: 11px; font-weight: 700; color: var(--forest); margin-bottom: 2px; }
+.m-pickup-s { font-size: 9px; color: var(--ink-80); }
+.m-loy-box {
+  margin: 0 12px 8px;
+  background: var(--saffron-lt); border-radius: 10px;
+  padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;
+  border: 1px solid var(--saffron);
+}
+.m-loy-t { font-size: 10px; font-weight: 700; color: var(--saffron); }
+.m-loy-btn {
+  height: 22px; padding: 0 10px; background: var(--saffron);
+  border-radius: 5px; font-size: 9px; font-weight: 700;
+  color: var(--white); display: inline-flex; align-items: center;
+}
+.m-act-row { display: flex; gap: 8px; padding: 8px 12px; }
+.m-act-btn {
+  flex: 1; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+}
+.m-act-btn.p { background: var(--brick); color: var(--white); }
+.m-act-btn.s { background: var(--ink-08); color: var(--ink-80); border: 1px solid var(--border); }
+
+/* subscription plan cards */
+.m-plan {
+  margin: 5px 12px; border-radius: 12px; padding: 12px;
+  border-left: 4px solid;
+}
+.m-plan.g { background: var(--forest-lt); border-left-color: var(--forest); }
+.m-plan.b { background: var(--slate-lt); border-left-color: var(--slate); }
+.m-plan.s { background: var(--brick-light); border-left-color: var(--brick); }
+.m-plan-row { display: flex; align-items: center; justify-content: space-between; }
+.m-plan-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+.m-plan-desc { font-size: 9px; color: var(--ink-50); margin: 2px 0; }
+.m-plan-price { font-family: var(--display); font-size: 15px; font-weight: 700; }
+.m-plan-price.g { color: var(--forest); }
+.m-plan-price.b { color: var(--slate); }
+.m-plan-price.s { color: var(--brick); }
+.m-plan-sel {
+  height: 26px; padding: 0 10px; background: var(--ink);
+  border-radius: 6px; font-size: 9px; font-weight: 700;
+  color: var(--white); text-transform: uppercase; letter-spacing: .06em;
+  display: inline-flex; align-items: center;
+}
+
+/* profile */
+.m-avatar {
+  width: 60px; height: 60px; border-radius: 50%;
+  object-fit: cover; margin: 14px auto 6px; display: block;
+  border: 3px solid var(--brick);
+}
+.m-profile-name {
+  text-align: center; font-family: var(--display);
+  font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 2px;
+}
+.m-profile-email { text-align: center; font-size: 9px; color: var(--ink-50); margin-bottom: 10px; }
+.m-lang-box {
+  margin: 0 12px 8px; background: var(--ink-08);
+  border-radius: 10px; padding: 10px 12px; border: 1px solid var(--border);
+}
+.m-lang-label { font-size: 9px; font-weight: 700; color: var(--ink-50); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.m-lang-btns { display: flex; gap: 5px; }
+.m-lang-btn {
+  height: 28px; flex: 1; border-radius: 7px;
+  font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.m-lang-btn.on { background: var(--ink); color: var(--white); }
+.m-lang-btn.off { background: var(--border); color: var(--ink-80); }
+.m-prof-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 12px; border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.m-prof-ico {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--ink-08); display: flex; align-items: center; justify-content: center;
+}
+.m-prof-ico svg { width: 14px; height: 14px; stroke: var(--ink-80); }
+.m-prof-label { font-size: 12px; font-weight: 500; color: var(--ink); flex: 1; }
+.m-prof-arrow { stroke: var(--ink-20); }
+
+/* ══════════════════════════════════════════
+   WEB HI-FI SYSTEM
+══════════════════════════════════════════ */
+.web-showcase { padding: 48px; background: #E8E2DC; }
+.web-screens-grid { display: flex; flex-direction: column; gap: 56px; }
+
+.web-screen-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-80);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
+.web-screen-label span {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--brick); background: var(--brick-light);
+  padding: 2px 8px; border-radius: 3px;
+}
+
+.web-frame {
+  background: var(--white);
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px var(--shadow-md), 0 2px 8px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* browser chrome */
+.browser-bar {
+  background: #F0EBE5;
+  padding: 9px 14px; display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.b-dots { display: flex; gap: 5px; }
+.b-dot { width: 9px; height: 9px; border-radius: 50%; }
+.b-dot:nth-child(1) { background: #FF5F57; }
+.b-dot:nth-child(2) { background: #FEBC2E; }
+.b-dot:nth-child(3) { background: #28C840; }
+.b-url {
+  flex: 1; height: 22px; background: var(--white);
+  border-radius: 11px; border: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 12px; gap: 6px;
+}
+.b-url-icon { width: 10px; height: 10px; stroke: var(--forest); }
+.b-url-text { font-family: var(--mono); font-size: 9px; color: var(--ink-50); }
+
+/* global web nav */
+.w-nav {
+  background: var(--white); height: 64px;
+  display: flex; align-items: center; padding: 0 40px;
+  border-bottom: 1px solid var(--border); gap: 0;
+}
+.w-logo {
+  font-family: var(--display); font-size: 20px; font-weight: 700;
+  color: var(--ink); margin-right: 36px; letter-spacing: .02em; flex-shrink: 0;
+}
+.w-logo em { color: var(--brick); font-style: italic; }
+.w-nav-links { display: flex; flex: 1; }
+.w-nav-link {
+  height: 64px; padding: 0 16px; display: flex; align-items: center;
+  font-size: 12px; font-weight: 500; color: var(--ink-50);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: all .2s;
+}
+.w-nav-link.on { color: var(--ink); border-bottom-color: var(--brick); font-weight: 600; }
+.w-nav-right { display: flex; align-items: center; gap: 12px; }
+.w-lang {
+  display: flex; border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden;
+}
+.w-lang-btn {
+  height: 32px; padding: 0 12px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; display: flex; align-items: center;
+}
+.w-lang-btn.on { background: var(--ink); color: var(--white); }
+.w-lang-btn.off { background: var(--white); color: var(--ink-50); }
+.w-search-field {
+  height: 36px; width: 200px; background: var(--ink-08);
+  border: 1px solid var(--border); border-radius: 8px;
+  display: flex; align-items: center; padding: 0 12px; gap: 8px;
+}
+.w-search-field svg { width: 14px; height: 14px; stroke: var(--ink-50); flex-shrink: 0; }
+.w-search-field span { font-size: 12px; color: var(--ink-50); }
+.w-cart-btn {
+  height: 38px; padding: 0 18px; background: var(--brick);
+  border-radius: 8px; display: flex; align-items: center; gap: 8px;
+}
+.w-cart-btn span { font-size: 11px; font-weight: 700; color: var(--white); letter-spacing: .04em; }
+.w-cart-count {
+  width: 18px; height: 18px; background: rgba(255,255,255,.25);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 9px; font-weight: 700; color: var(--white);
+}
+.w-cart-btn svg { width: 16px; height: 16px; stroke: var(--white); }
+
+/* web hero */
+.w-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 380px; }
+.w-hero-content { padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px; background: var(--ink); }
+.w-hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brick); }
+.w-hero-title { font-family: var(--display); font-size: clamp(28px,3vw,44px); font-weight: 600; color: var(--cream); line-height: 1.15; }
+.w-hero-title em { color: var(--brick); }
+.w-hero-desc { font-size: 14px; color: var(--ink-50); line-height: 1.7; max-width: 400px; }
+.w-hero-btns { display: flex; gap: 10px; }
+.w-btn-primary { height: 44px; padding: 0 24px; background: var(--brick); border-radius: 8px; display: flex; align-items: center; font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: .05em; text-transform: uppercase; gap: 8px; }
+.w-btn-secondary { height: 44px; padding: 0 24px; border: 1.5px solid rgba(255,255,255,.2); border-radius: 8px; display: flex; align-items: center; font-size: 12px; font-weight: 600; color: var(--cream); letter-spacing: .04em; }
+.w-hero-img { position: relative; }
+.w-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.w-hero-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--ink) 0%, transparent 30%);
+}
+.w-trust-bar {
+  background: var(--cream-warm); padding: 14px 40px;
+  display: flex; gap: 36px; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.w-trust-item { display: flex; align-items: center; gap: 8px; }
+.w-trust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brick); flex-shrink: 0; }
+.w-trust-text { font-size: 12px; font-weight: 600; color: var(--ink-80); }
+
+/* category strip */
+.w-cat-strip { display: grid; grid-template-columns: repeat(5,1fr); border-bottom: 1px solid var(--border); }
+.w-cat { padding: 14px 20px; display: flex; align-items: center; gap: 10px; background: var(--white); border-right: 1px solid var(--border); cursor: pointer; transition: background .15s; }
+.w-cat:last-child { border-right: none; }
+.w-cat.sel { background: var(--cream-warm); }
+.w-cat-icon { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.w-cat-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+.w-cat.sel .w-cat-name { color: var(--brick); }
+.w-cat-count { font-size: 10px; color: var(--ink-50); }
+
+/* product grid web */
+.w-products-section { background: var(--ink-08); padding: 24px 40px 32px; }
+.w-products-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.w-products-title { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); }
+.w-products-link { font-size: 12px; font-weight: 700; color: var(--brick); letter-spacing: .05em; text-transform: uppercase; }
+.w-prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.w-prod-card {
+  background: var(--white); border-radius: 12px;
+  overflow: hidden; border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow); transition: transform .2s, box-shadow .2s;
+}
+.w-prod-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow-md); }
+.w-prod-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.w-prod-body { padding: 14px; }
+.w-prod-tags { display: flex; gap: 5px; margin-bottom: 6px; flex-wrap: wrap; }
+.w-prod-tag {
+  height: 18px; padding: 0 7px; border-radius: 4px;
+  font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  display: flex; align-items: center;
+}
+.w-prod-tag.f { background: var(--forest-lt); color: var(--forest); }
+.w-prod-tag.a { background: var(--saffron-lt); color: var(--saffron); }
+.w-prod-tag.n { background: var(--brick-light); color: var(--brick); }
+.w-prod-name { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.w-prod-sub { font-size: 11px; color: var(--ink-50); margin-bottom: 10px; }
+.w-prod-foot { display: flex; align-items: center; justify-content: space-between; }
+.w-prod-price { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); }
+.w-prod-add {
+  height: 34px; padding: 0 14px; background: var(--ink);
+  border-radius: 8px; display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--white);
+}
+.w-prod-add svg { width: 12px; height: 12px; stroke: var(--white); }
+
+/* web footer */
+.w-footer {
+  background: var(--ink); padding: 40px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+}
+.w-footer-brand-name { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--cream); margin-bottom: 10px; }
+.w-footer-brand-name em { color: var(--brick); }
+.w-footer-desc { font-size: 12px; color: var(--ink-50); line-height: 1.7; max-width: 240px; }
+.w-footer-col-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--brick); margin-bottom: 12px; }
+.w-footer-link { font-size: 12px; color: var(--ink-50); margin-bottom: 7px; }
+.w-footer-bottom { background: var(--ink); border-top: 1px solid var(--ink-80); padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+.w-footer-copy { font-size: 11px; color: var(--ink-50); }
+.w-footer-payment-icons { display: flex; gap: 8px; }
+.w-pay-logo-sm {
+  height: 20px; padding: 0 6px; border-radius: 3px;
+  font-size: 8px; font-weight: 700; display: flex; align-items: center;
+}
+.w-pay-logo-sm.esewa { background: #60BB46; color: white; }
+.w-pay-logo-sm.khalti { background: #5C2D8A; color: white; }
+
+/* WEB MENU PAGE */
+.w-filter-bar {
+  background: var(--white); padding: 12px 40px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.w-filter-label { font-size: 11px; font-weight: 700; color: var(--ink-50); text-transform: uppercase; letter-spacing: .07em; }
+.w-fchip {
+  height: 30px; padding: 0 14px; border-radius: 15px;
+  font-size: 11px; font-weight: 600;
+}
+.w-fchip.on { background: var(--ink); color: var(--white); }
+.w-fchip.off { background: var(--ink-08); color: var(--ink-80); border: 1px solid var(--border); }
+.w-fchip-space { flex: 1; }
+.w-sort-btn {
+  height: 30px; padding: 0 14px; background: var(--ink-08);
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 11px; font-weight: 600; color: var(--ink-80);
+  display: flex; align-items: center; gap: 6px;
+}
+.w-sort-btn svg { width: 12px; height: 12px; stroke: var(--ink-50); }
+.w-menu-layout { display: grid; grid-template-columns: 220px 1fr; }
+.w-sidebar { background: var(--white); padding: 20px; border-right: 1px solid var(--border); }
+.w-sidebar-sec { margin-bottom: 22px; }
+.w-sidebar-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-80); margin-bottom: 10px; }
+.w-sidebar-item { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.w-check { width: 14px; height: 14px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; }
+.w-check.on { background: var(--ink); border-color: var(--ink); }
+.w-check.on::after { content: '✓'; display: block; font-size: 9px; color: white; text-align: center; line-height: 14px; }
+.w-sidebar-label { font-size: 12px; color: var(--ink-80); flex: 1; }
+.w-sidebar-count { font-size: 10px; color: var(--ink-50); }
+.w-price-slider { height: 4px; background: var(--border); border-radius: 2px; margin: 8px 0; position: relative; }
+.w-price-track { position: absolute; left: 15%; right: 25%; height: 4px; background: var(--ink); border-radius: 2px; }
+.w-menu-content { padding: 20px 24px; background: var(--ink-08); }
+.w-menu-items { display: flex; flex-direction: column; gap: 12px; }
+.w-menu-item {
+  background: var(--white); border-radius: 10px;
+  border: 1px solid var(--border);
+  display: grid; grid-template-columns: 100px 1fr auto;
+  overflow: hidden; box-shadow: 0 1px 4px var(--shadow);
+}
+.w-menu-item-img { width: 100px; height: 90px; object-fit: cover; display: block; }
+.w-menu-item-info { padding: 12px 16px; }
+.w-menu-item-name { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.w-menu-item-desc { font-size: 11px; color: var(--ink-50); line-height: 1.5; margin-bottom: 6px; }
+.w-menu-item-tags { display: flex; gap: 5px; }
+.w-menu-item-actions { padding: 12px 16px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+.w-menu-item-price { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); }
+.w-menu-item-add {
+  height: 32px; padding: 0 14px; background: var(--ink);
+  border-radius: 7px; display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--white);
+}
+.w-menu-item-add svg { width: 12px; height: 12px; stroke: var(--white); }
+
+/* WEB ITEM DETAIL */
+.w-detail-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.w-detail-gallery { position: relative; min-height: 420px; }
+.w-detail-main-img { width: 100%; height: 340px; object-fit: cover; display: block; }
+.w-detail-thumbs { display: flex; gap: 8px; padding: 12px 16px; background: var(--cream-warm); border-top: 1px solid var(--border); }
+.w-detail-thumb { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; border: 2px solid var(--border); }
+.w-detail-thumb.on { border-color: var(--ink); }
+.w-detail-info { padding: 32px 36px; display: flex; flex-direction: column; gap: 14px; border-left: 1px solid var(--border); }
+.w-detail-name { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.w-detail-sub { font-size: 13px; color: var(--ink-50); }
+.w-detail-badges { display: flex; gap: 7px; flex-wrap: wrap; }
+.w-det-badge { height: 24px; padding: 0 10px; border-radius: 5px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; }
+.w-det-badge.f { background: var(--forest-lt); color: var(--forest); }
+.w-det-badge.a { background: var(--saffron-lt); color: var(--saffron); }
+.w-det-badge.n { background: var(--slate-lt); color: var(--slate); }
+.w-detail-price { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--brick); }
+.w-detail-section-t { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--ink-50); margin-bottom: 8px; }
+.w-ing-box { background: var(--cream-warm); border-radius: 8px; padding: 12px 14px; border: 1px solid var(--border); font-size: 12px; color: var(--ink-80); line-height: 1.7; }
+.w-size-opts { display: flex; gap: 8px; }
+.w-size-opt { flex: 1; height: 38px; border-radius: 8px; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--border); }
+.w-size-opt.on { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.w-size-opt.off { background: var(--white); color: var(--ink-80); }
+.w-addons { display: flex; gap: 6px; flex-wrap: wrap; }
+.w-addon { height: 28px; padding: 0 12px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--ink-80); display: flex; align-items: center; background: var(--white); }
+.w-addon.on { background: var(--cream-warm); border-color: var(--ink); color: var(--ink); }
+.w-detail-cta-row { display: flex; gap: 12px; align-items: center; }
+.w-qty-ctrl { display: flex; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+.w-qty-b { width: 38px; height: 44px; background: var(--ink-08); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; color: var(--ink-80); }
+.w-qty-n { width: 40px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--ink); border-left: 1.5px solid var(--border); border-right: 1.5px solid var(--border); }
+.w-cart-cta { flex: 1; height: 48px; background: var(--brick); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--white); letter-spacing: .05em; text-transform: uppercase; gap: 8px; }
+.w-cart-cta svg { width: 16px; height: 16px; stroke: var(--white); }
+
+/* WEB CART */
+.w-cart-layout { display: grid; grid-template-columns: 1fr 360px; }
+.w-cart-main { padding: 28px 36px; background: var(--ink-08); }
+.w-cart-title { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 20px; }
+.w-cart-item-row {
+  background: var(--white); border-radius: 10px;
+  border: 1px solid var(--border); margin-bottom: 12px;
+  display: grid; grid-template-columns: 90px 1fr auto;
+  overflow: hidden;
+}
+.w-cart-item-img { width: 90px; height: 90px; object-fit: cover; }
+.w-cart-item-info { padding: 14px 18px; }
+.w-cart-item-name { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.w-cart-item-sub { font-size: 11px; color: var(--ink-50); margin-bottom: 8px; }
+.w-cart-item-tags { display: flex; gap: 5px; }
+.w-cart-item-actions { padding: 14px 16px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+.w-cart-price { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); }
+.w-cart-qty { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.w-cqb { width: 28px; height: 28px; background: var(--ink-08); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--ink-80); }
+.w-cqn { width: 30px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--ink); border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.w-remove-btn { font-size: 10px; color: var(--brick); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.w-cart-sidebar { background: var(--white); border-left: 1px solid var(--border); padding: 28px; }
+.w-order-summary-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.w-sum-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.w-sum-label { font-size: 13px; color: var(--ink-50); }
+.w-sum-val { font-size: 13px; font-weight: 600; color: var(--ink); }
+.w-sum-row.total .w-sum-label { font-size: 15px; font-weight: 700; color: var(--ink); }
+.w-sum-row.total .w-sum-val { font-size: 17px; font-weight: 700; color: var(--brick); font-family: var(--display); }
+.w-sub-upsell { background: var(--saffron-lt); border: 1px solid var(--saffron); border-left: 4px solid var(--saffron); border-radius: 10px; padding: 14px; margin: 16px 0; }
+.w-sub-upsell-t { font-size: 13px; font-weight: 700; color: var(--saffron); margin-bottom: 3px; }
+.w-sub-upsell-s { font-size: 11px; color: var(--ink-80); margin-bottom: 8px; }
+.w-sub-upsell-btn { height: 30px; padding: 0 14px; background: var(--saffron); border-radius: 6px; font-size: 11px; font-weight: 700; color: var(--white); display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: .05em; }
+.w-checkout-btn { width: 100%; height: 50px; background: var(--brick); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: .06em; margin-top: 16px; gap: 8px; }
+.w-checkout-btn svg { width: 16px; height: 16px; stroke: var(--white); }
+.w-secure-note { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; }
+.w-secure-note svg { width: 12px; height: 12px; stroke: var(--forest); }
+.w-secure-note span { font-size: 11px; color: var(--ink-50); }
+
+/* WEB PAYMENT */
+.w-payment-layout { display: grid; grid-template-columns: 1fr 360px; }
+.w-payment-main { padding: 28px 36px; background: var(--ink-08); }
+.w-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.w-step { padding: 10px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.w-step.done { color: var(--forest); border-bottom-color: var(--forest); }
+.w-step.active { color: var(--brick); border-bottom-color: var(--brick); }
+.w-step.next { color: var(--ink-50); }
+.w-payment-section-t { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin-bottom: 14px; }
+.w-pay-methods { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.w-pay-meth {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.w-pay-meth.active { border-color: var(--ink); background: var(--cream-warm); }
+.w-pay-meth-logo { width: 48px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.w-pay-meth-logo.esewa { background: #60BB46; color: white; }
+.w-pay-meth-logo.khalti { background: #5C2D8A; color: white; }
+.w-pay-meth-logo.cod { background: var(--ink-08); color: var(--ink-80); font-size: 9px; }
+.w-pay-meth-name { font-size: 14px; font-weight: 600; color: var(--ink); flex: 1; }
+.w-pay-meth-sub { font-size: 11px; color: var(--ink-50); }
+.w-pay-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; }
+.w-pay-radio.on { border-color: var(--brick); background: var(--brick); position: relative; }
+.w-pay-radio.on::after { content: ''; position: absolute; inset: 3px; background: white; border-radius: 50%; }
+.w-pay-form { background: var(--white); border-radius: 10px; border: 1px solid var(--border); padding: 18px; }
+.w-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.w-input-field { height: 42px; background: var(--ink-08); border: 1px solid var(--border); border-radius: 8px; padding: 0 14px; display: flex; align-items: center; gap: 8px; }
+.w-input-label { font-size: 10px; font-weight: 700; color: var(--ink-50); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.w-input-val { font-size: 12px; color: var(--ink-80); }
+.w-ssl-badge { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--forest-lt); border-radius: 8px; margin-top: 12px; }
+.w-ssl-badge svg { width: 16px; height: 16px; stroke: var(--forest); flex-shrink: 0; }
+.w-ssl-text { font-size: 11px; font-weight: 600; color: var(--forest); }
+
+/* WEB CONFIRMATION */
+.w-conf-layout { display: grid; grid-template-columns: 1fr 400px; }
+.w-conf-main { padding: 40px 48px; background: var(--ink-08); }
+.w-conf-icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: var(--forest-lt); border: 3px solid var(--forest); display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 18px; }
+.w-conf-title { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.w-conf-sub { font-size: 14px; color: var(--ink-50); margin-bottom: 24px; }
+.w-conf-cards { display: flex; flex-direction: column; gap: 14px; }
+.w-conf-card { background: var(--white); border-radius: 10px; border: 1px solid var(--border); padding: 18px 22px; }
+.w-conf-card.grn { border-left: 4px solid var(--forest); }
+.w-conf-card.gold { border-left: 4px solid var(--saffron); }
+.w-conf-card.blu { border-left: 4px solid var(--slate); }
+.w-conf-card-t { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-50); margin-bottom: 8px; }
+.w-oid { font-family: var(--mono); font-size: 22px; font-weight: 500; color: var(--brick); margin-bottom: 6px; }
+.w-conf-info { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
+.w-conf-info-lbl { font-size: 12px; color: var(--ink-50); min-width: 90px; }
+.w-conf-info-val { font-size: 13px; font-weight: 600; color: var(--ink); }
+.w-pickup-chip { display: inline-flex; height: 32px; padding: 0 14px; background: var(--forest-lt); border-radius: 6px; align-items: center; font-size: 12px; font-weight: 700; color: var(--forest); gap: 6px; margin-top: 8px; }
+.w-pickup-chip svg { width: 14px; height: 14px; stroke: var(--forest); }
+.w-conf-actions { display: flex; gap: 10px; margin-top: 20px; }
+.w-conf-btn { flex: 1; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.w-conf-btn.p { background: var(--brick); color: var(--white); }
+.w-conf-btn.s { background: var(--white); border: 1.5px solid var(--border); color: var(--ink-80); }
+.w-conf-sidebar { background: var(--white); border-left: 1px solid var(--border); padding: 28px; }
+.w-receipt-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+.w-receipt-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.w-receipt-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.w-receipt-name { font-size: 13px; font-weight: 600; color: var(--ink); flex: 1; }
+.w-receipt-price { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); }
+.w-loy-progress-box { background: var(--saffron-lt); border-radius: 10px; padding: 14px; margin-top: 16px; }
+.w-loy-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.w-loy-title { font-size: 12px; font-weight: 700; color: var(--saffron); }
+.w-loy-pts { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--saffron); }
+.w-loy-bar { height: 8px; background: rgba(212,129,26,.2); border-radius: 4px; margin-bottom: 4px; }
+.w-loy-fill { height: 8px; background: var(--saffron); border-radius: 4px; width: 50%; }
+.w-loy-sub { font-size: 10px; color: var(--saffron); opacity: .7; }
+
+/* WEB SUBSCRIPTION */
+.w-sub-hero { background: var(--ink); padding: 40px 48px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+.w-sub-hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--saffron); margin-bottom: 10px; }
+.w-sub-hero-title { font-family: var(--display); font-size: 32px; font-weight: 600; color: var(--cream); line-height: 1.2; margin-bottom: 10px; }
+.w-sub-hero-desc { font-size: 13px; color: var(--ink-50); line-height: 1.7; max-width: 480px; }
+.w-sub-hero-img { width: 200px; height: 120px; border-radius: 10px; object-fit: cover; }
+.w-plans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; padding: 32px 40px; background: var(--ink-08); }
+.w-plan-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 2px 8px var(--shadow); }
+.w-plan-card.featured { border: 2px solid var(--saffron); }
+.w-plan-featured-badge { background: var(--saffron); color: var(--white); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; text-align: center; padding: 5px; }
+.w-plan-header { padding: 20px 22px 14px; border-bottom: 1px solid var(--border); }
+.w-plan-header.g { background: var(--forest-lt); }
+.w-plan-header.gold { background: var(--saffron-lt); }
+.w-plan-header.b { background: var(--slate-lt); }
+.w-plan-name { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.w-plan-price { font-family: var(--display); font-size: 28px; font-weight: 700; }
+.w-plan-price.g { color: var(--forest); }
+.w-plan-price.gold { color: var(--saffron); }
+.w-plan-price.b { color: var(--slate); }
+.w-plan-period { font-size: 12px; color: var(--ink-50); }
+.w-plan-body { padding: 18px 22px; }
+.w-plan-feature { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.w-plan-check { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--white); }
+.w-plan-check.g { background: var(--forest); }
+.w-plan-check.gold { background: var(--saffron); }
+.w-plan-check.b { background: var(--slate); }
+.w-plan-feature-txt { font-size: 12px; color: var(--ink-80); }
+.w-plan-cta { margin: 16px 22px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: .06em; }
+.w-plan-cta.g { background: var(--forest); }
+.w-plan-cta.gold { background: var(--saffron); }
+.w-plan-cta.b { background: var(--slate); }
+.w-sub-notes { padding: 16px 40px; background: var(--white); border-top: 1px solid var(--border); display: flex; gap: 32px; align-items: center; }
+.w-sub-note-item { display: flex; align-items: center; gap: 8px; }
+.w-sub-note-item svg { width: 14px; height: 14px; stroke: var(--forest); flex-shrink: 0; }
+.w-sub-note-txt { font-size: 12px; font-weight: 600; color: var(--ink-80); }
+
+/* WEB PROFILE */
+.w-profile-layout { display: grid; grid-template-columns: 260px 1fr; }
+.w-profile-sidebar { background: var(--white); border-right: 1px solid var(--border); padding: 24px; }
+.w-profile-avatar-wrap { text-align: center; padding: 16px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.w-profile-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 10px; display: block; border: 3px solid var(--brick); }
+.w-profile-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); }
+.w-profile-email { font-size: 11px; color: var(--ink-50); margin-top: 2px; }
+.w-profile-nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; margin-bottom: 2px; }
+.w-profile-nav-item.on { background: var(--cream-warm); }
+.w-profile-nav-ico { width: 32px; height: 32px; border-radius: 8px; background: var(--ink-08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.w-profile-nav-ico svg { width: 14px; height: 14px; stroke: var(--ink-80); }
+.w-profile-nav-item.on .w-profile-nav-ico { background: var(--brick-light); }
+.w-profile-nav-item.on .w-profile-nav-ico svg { stroke: var(--brick); }
+.w-profile-nav-label { font-size: 13px; font-weight: 600; color: var(--ink-80); }
+.w-profile-nav-item.on .w-profile-nav-label { color: var(--brick); }
+.w-profile-content { padding: 28px 36px; background: var(--ink-08); }
+.w-profile-section { background: var(--white); border-radius: 10px; border: 1px solid var(--border); padding: 22px; margin-bottom: 16px; }
+.w-profile-section-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.w-profile-section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); }
+.w-edit-btn { height: 28px; padding: 0 14px; background: var(--ink-08); border: 1px solid var(--border); border-radius: 6px; font-size: 10px; font-weight: 700; color: var(--ink-80); text-transform: uppercase; letter-spacing: .06em; display: inline-flex; align-items: center; }
+.w-form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.w-profile-field { height: 44px; background: var(--ink-08); border: 1px solid var(--border); border-radius: 8px; padding: 0 14px; display: flex; align-items: center; gap: 10px; }
+.w-profile-field-label { font-size: 10px; font-weight: 700; color: var(--ink-50); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.w-profile-field-val { font-size: 13px; font-weight: 500; color: var(--ink-80); }
+.w-lang-options { display: flex; gap: 8px; }
+.w-lang-opt { height: 36px; padding: 0 18px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 12px; font-weight: 700; display: flex; align-items: center; }
+.w-lang-opt.on { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.w-lang-opt.off { background: var(--white); color: var(--ink-80); }
+.w-loyalty-row { display: flex; align-items: center; gap: 24px; }
+.w-loyalty-big { font-family: var(--display); font-size: 42px; font-weight: 700; color: var(--saffron); }
+.w-loyalty-info { flex: 1; }
+.w-loyalty-sub { font-size: 12px; color: var(--ink-50); margin-bottom: 8px; }
+.w-loyalty-bar-wrap { height: 8px; background: var(--saffron-lt); border-radius: 4px; margin-bottom: 4px; }
+.w-loyalty-fill { height: 8px; background: var(--saffron); border-radius: 4px; width: 50%; }
+.w-loyalty-note { font-size: 11px; color: var(--ink-50); }
+.w-redeem-btn { height: 36px; padding: 0 18px; background: var(--saffron); border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--white); display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: .05em; }
+.w-order-history-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.w-order-history-img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.w-order-history-info { flex: 1; }
+.w-order-history-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.w-order-history-sub { font-size: 11px; color: var(--ink-50); }
+.w-order-history-price { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); }
+.w-reorder-btn { height: 28px; padding: 0 12px; background: var(--ink); border-radius: 6px; font-size: 10px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: .05em; display: inline-flex; align-items: center; }
+
+/* ─ SECTION WRAPPERS ─ */
+.section-wrap { padding: 0; }
+.section-wrap:nth-child(even) { background: #E5DFD8; }
+
+/* annotations footer */
+footer { background: var(--ink); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+.foot-l { color: var(--ink-50); font-size: 12px; line-height: 1.8; }
+.foot-l strong { color: var(--ghost, var(--ink-20)); display: block; margin-bottom: 2px; }
+.foot-badge { background: var(--brick); color: var(--white); font-size: 10px; font-weight: 700; padding: 7px 16px; border-radius: 3px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* SVG icons helper */
+svg { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+
+<!-- MASTER NAV -->
+<nav class="master-nav">
+  <div class="master-nav-logo">Pauwa <em>Bakery</em></div>
+  <a href="#mobile" class="active">Mobile Hi-Fi</a>
+  <a href="#web">Web Hi-Fi</a>
+  <div class="master-nav-badge">Hi-Fi v1.0</div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="sh-eyebrow">Google UX Certificate · Portfolio Project</div>
+  <div class="sh-title">Hi-Fi Design — Pauwa Bakery<br>Pokhara, Nepal</div>
+  <div class="sh-sub">Brand colors, real photography, full typography hierarchy and visual polish across 8 mobile screens and 8 web pages. Based on lo-fi wireframes completed in previous phase.</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     MOBILE HI-FI
+════════════════════════════════════════ -->
+<div id="mobile" class="section-wrap">
+<div class="mobile-showcase">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(this,'m-screens')">All 8 Screens</button>
+  </div>
+
+  <div class="tab-pane active" id="pane-m-screens">
+  <div class="mobile-grid">
+
+  <!-- ─── SCREEN 01: HOME ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>01</span> Home</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status">
+          <span class="m-status-time">9:41</span>
+          <div class="m-status-icons">
+            <div class="m-status-icon" style="width:16px"></div>
+            <div class="m-status-icon" style="width:10px"></div>
+            <div class="m-status-icon" style="width:18px"></div>
+          </div>
+        </div>
+        <div class="m-nav">
+          <div class="m-nav-logo">Pauwa <em>Bakery</em></div>
+          <div class="m-nav-icons">
+            <div class="m-nav-icon">
+              <svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <div class="m-nav-icon">
+              <svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+          </div>
+        </div>
+        <img class="m-hero-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=440&h=220&fit=crop&q=80" alt="fresh bakery">
+        <div style="background:var(--ink);padding:10px 12px 8px">
+          <div style="font-family:var(--display);font-size:13px;font-weight:600;color:var(--cream);line-height:1.3">Fresh bakes every morning.<br><em style="color:var(--brick)">Order ahead, skip the queue.</em></div>
+        </div>
+        <div class="m-search">
+          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span class="m-search-text">Search cakes, bread, pastries…</span>
+        </div>
+        <div class="m-chips">
+          <div class="m-chip active">All</div>
+          <div class="m-chip off">Cakes</div>
+          <div class="m-chip off">Bread</div>
+          <div class="m-chip off">Pastry</div>
+          <div class="m-chip off">Drinks</div>
+        </div>
+        <div class="m-section-hd">
+          <h3>Fresh Today</h3>
+          <a>See all →</a>
+        </div>
+        <div class="m-cards">
+          <div class="m-card">
+            <img class="m-card-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=160&fit=crop&q=80" alt="doughnut">
+            <div class="m-card-body">
+              <div class="m-card-tag fresh">Fresh</div>
+              <div class="m-card-name">Glazed Doughnut</div>
+              <div class="m-card-sub">Classic ring glaze</div>
+              <div class="m-card-foot">
+                <span class="m-card-price">Rs. 80</span>
+                <div class="m-add-btn"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="m-card">
+            <img class="m-card-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=160&fit=crop&q=80" alt="cake">
+            <div class="m-card-body">
+              <div class="m-card-tag fresh">Fresh</div>
+              <div class="m-card-name">Choco Layer Cake</div>
+              <div class="m-card-sub">Belgian chocolate</div>
+              <div class="m-card-foot">
+                <span class="m-card-price">Rs. 450</span>
+                <div class="m-add-btn"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-bottom-nav">
+          <div class="m-bnav-item active"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="m-bnav-label">Home</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><div class="m-bnav-label">Menu</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div class="m-bnav-label">Cart</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bnav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 02: MENU ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>02</span> Menu</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span><div class="m-status-icons"><div class="m-status-icon" style="width:14px"></div><div class="m-status-icon" style="width:18px"></div></div></div>
+        <div class="m-nav">
+          <div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></div>
+          <div class="m-nav-logo" style="font-size:13px">Menu</div>
+          <div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="1.8" width="14" height="14"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+        </div>
+        <div style="background:var(--cream-warm);padding:8px 12px;border-bottom:1px solid var(--border)">
+          <div class="m-chips" style="padding:0;margin-bottom:0">
+            <div class="m-chip active">All</div>
+            <div class="m-chip off">Fresh</div>
+            <div class="m-chip off">Veg</div>
+            <div class="m-chip off">Nut-Free</div>
+          </div>
+        </div>
+        <div class="m-item-row">
+          <img class="m-item-thumb" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=108&h=108&fit=crop&q=80" alt>
+          <div class="m-item-info">
+            <div class="m-item-name">Glazed Doughnut</div>
+            <div class="m-item-sub">Ring style, classic glaze</div>
+            <div class="m-item-tags"><span class="m-card-tag fresh">Fresh</span><span class="m-card-tag nut-free">Egg-Free</span></div>
+          </div>
+          <div class="m-item-act"><span class="m-item-price">Rs. 80</span><div class="m-add-btn"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg></div></div>
+        </div>
+        <div class="m-item-row">
+          <img class="m-item-thumb" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=108&h=108&fit=crop&q=80" alt>
+          <div class="m-item-info">
+            <div class="m-item-name">Choco Layer Cake</div>
+            <div class="m-item-sub">Belgian chocolate ganache</div>
+            <div class="m-item-tags"><span class="m-card-tag fresh">Fresh</span></div>
+          </div>
+          <div class="m-item-act"><span class="m-item-price">Rs. 450</span><div class="m-add-btn"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg></div></div>
+        </div>
+        <div class="m-item-row">
+          <img class="m-item-thumb" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=108&h=108&fit=crop&q=80" alt>
+          <div class="m-item-info">
+            <div class="m-item-name">Multigrain Bread</div>
+            <div class="m-item-sub">Whole wheat, seeds</div>
+            <div class="m-item-tags"><span class="m-card-tag fresh">Fresh</span><span class="m-card-tag nut-free" style="background:var(--slate-lt);color:var(--slate)">Vegan</span></div>
+          </div>
+          <div class="m-item-act"><span class="m-item-price">Rs. 120</span><div class="m-add-btn"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg></div></div>
+        </div>
+        <div class="m-item-row">
+          <img class="m-item-thumb" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=108&h=108&fit=crop&q=80" alt>
+          <div class="m-item-info">
+            <div class="m-item-name">Apple Cinnamon Pastry</div>
+            <div class="m-item-sub">Flaky puff pastry</div>
+            <div class="m-item-tags"><span class="m-card-tag fresh">Fresh</span></div>
+          </div>
+          <div class="m-item-act"><span class="m-item-price">Rs. 95</span><div class="m-add-btn"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg></div></div>
+        </div>
+        <div class="m-bottom-nav">
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Home</div></div>
+          <div class="m-bnav-item active"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--brick)" stroke-width="1.8" width="16" height="16"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><div class="m-bnav-label">Menu</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Cart</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Profile</div></div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 03: ITEM DETAIL ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>03</span> Item Detail</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span><div class="m-status-icons"><div class="m-status-icon" style="width:14px"></div></div></div>
+        <img class="m-full-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=440&h=280&fit=crop&q=80" alt="doughnut">
+        <div style="padding:0 14px 8px;background:var(--white)">
+          <div style="display:flex;gap:6px;margin-top:-14px;justify-content:flex-end;position:relative;z-index:1">
+            <div style="width:28px;height:28px;background:white;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px var(--shadow)"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div style="width:28px;height:28px;background:white;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px var(--shadow)"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+          </div>
+        </div>
+        <div class="m-det" style="padding-top:4px">
+          <div class="m-det-title">Glazed Doughnut</div>
+          <div class="m-det-sub">Pauwa Bakery Classic · Made fresh daily</div>
+          <div class="m-det-badges">
+            <div class="m-det-badge f">Fresh Today</div>
+            <div class="m-det-badge a">No Nuts</div>
+            <div class="m-det-badge n">Egg-Free</div>
+          </div>
+          <div class="m-det-price-row">
+            <div class="m-det-price">Rs. 80</div>
+            <div style="font-size:9px;background:var(--forest-lt);color:var(--forest);padding:3px 8px;border-radius:4px;font-weight:700;text-transform:uppercase;letter-spacing:.05em">In Stock</div>
+          </div>
+          <div class="m-det-section-t">Ingredients</div>
+          <div class="m-ing-text">Wheat flour, sugar, vegetable oil, yeast, vanilla extract, food-grade glaze. <span style="color:var(--brick);font-weight:600">Contains: Gluten, Dairy.</span></div>
+          <div class="m-det-section-t">Size</div>
+          <div class="m-opts">
+            <div class="m-opt on">Regular</div>
+            <div class="m-opt off">Large</div>
+            <div class="m-opt off">Box of 6</div>
+          </div>
+          <div class="m-cta">
+            <svg viewBox="0 0 24 24" stroke="white" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Add to Cart — Rs. 80</span>
+          </div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 04: CART ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>04</span> Cart</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span></div>
+        <div class="m-nav">
+          <div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></div>
+          <div class="m-nav-logo" style="font-size:13px">Your Cart</div>
+          <div style="font-size:10px;color:var(--brick);font-weight:700">3 items</div>
+        </div>
+        <div class="m-cart-item">
+          <img class="m-cart-thumb" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=96&h=96&fit=crop&q=80" alt>
+          <div class="m-cart-info"><div class="m-cart-name">Glazed Doughnut × 2</div><div class="m-cart-price">Rs. 160</div></div>
+          <div class="m-qty"><div class="m-qty-btn">−</div><div class="m-qty-val">2</div><div class="m-qty-btn">+</div></div>
+        </div>
+        <div class="m-cart-item">
+          <img class="m-cart-thumb" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=96&h=96&fit=crop&q=80" alt>
+          <div class="m-cart-info"><div class="m-cart-name">Apple Cinnamon Pastry</div><div class="m-cart-price">Rs. 95</div></div>
+          <div class="m-qty"><div class="m-qty-btn">−</div><div class="m-qty-val">1</div><div class="m-qty-btn">+</div></div>
+        </div>
+        <div class="m-cart-item">
+          <img class="m-cart-thumb" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=96&h=96&fit=crop&q=80" alt>
+          <div class="m-cart-info"><div class="m-cart-name">Multigrain Bread</div><div class="m-cart-price">Rs. 120</div></div>
+          <div class="m-qty"><div class="m-qty-btn">−</div><div class="m-qty-val">1</div><div class="m-qty-btn">+</div></div>
+        </div>
+        <div class="m-sub-ban">
+          <div class="m-sub-ban-t">Subscribe Monthly — Save 15%</div>
+          <div class="m-sub-ban-s">Daily bread &amp; milk bundles available from Rs. 800/mo</div>
+          <span class="m-sub-ban-btn">Add Plan</span>
+        </div>
+        <div class="m-sum">
+          <div class="m-sum-row"><span class="m-sum-label">Subtotal</span><span class="m-sum-val">Rs. 375</span></div>
+          <div class="m-sum-row"><span class="m-sum-label">Delivery</span><span class="m-sum-val" style="color:var(--forest)">Free</span></div>
+          <div class="m-sum-row total" style="border-top:1px solid var(--border);padding-top:6px;margin-top:3px"><span class="m-sum-label">Total</span><span class="m-sum-val">Rs. 375</span></div>
+        </div>
+        <div style="padding:8px 12px 12px">
+          <div class="m-cta"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2" width="16" height="16"><polyline points="9 10 4 15 9 20"/><path d="M20 4v7a4 4 0 0 1-4 4H4"/></svg><span>Proceed to Checkout</span></div>
+        </div>
+        <div class="m-bottom-nav">
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Home</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Menu</div></div>
+          <div class="m-bnav-item active"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--brick)" stroke-width="1.8" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div class="m-bnav-label">Cart</div></div>
+          <div class="m-bnav-item"><div class="m-bnav-icon"><svg viewBox="0 0 24 24" stroke="var(--ink-50)" stroke-width="1.8" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bnav-label" style="color:var(--ink-50)">Profile</div></div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 05: PAYMENT ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>05</span> Payment</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span></div>
+        <div class="m-nav"><div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></div><div class="m-nav-logo" style="font-size:13px">Payment</div><div></div></div>
+        <div style="padding:10px 12px 4px;font-size:10px;font-weight:700;color:var(--ink-50);text-transform:uppercase;letter-spacing:.08em">Choose Method</div>
+        <div class="m-pay-method active">
+          <div class="m-pay-logo esewa">eSewa</div>
+          <div><div class="m-pay-name">eSewa</div><div style="font-size:9px;color:var(--ink-50)">Digital wallet · Instant</div></div>
+          <div class="m-pay-radio on"></div>
+        </div>
+        <div class="m-pay-method">
+          <div class="m-pay-logo khalti">Khalti</div>
+          <div><div class="m-pay-name">Khalti</div><div style="font-size:9px;color:var(--ink-50)">Digital wallet</div></div>
+          <div class="m-pay-radio"></div>
+        </div>
+        <div class="m-pay-method">
+          <div class="m-pay-logo cod" style="font-size:8px">COD</div>
+          <div><div class="m-pay-name">Cash on Pickup</div><div style="font-size:9px;color:var(--ink-50)">Pay at counter</div></div>
+          <div class="m-pay-radio"></div>
+        </div>
+        <div class="m-sum" style="margin-top:10px">
+          <div style="font-size:10px;font-weight:700;color:var(--ink-50);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Order Summary</div>
+          <div class="m-sum-row"><span class="m-sum-label">3 items</span><span class="m-sum-val">Rs. 375</span></div>
+          <div class="m-sum-row total" style="border-top:1px solid var(--border);padding-top:6px;margin-top:3px"><span class="m-sum-label">Total</span><span class="m-sum-val">Rs. 375</span></div>
+        </div>
+        <div style="padding:6px 12px 10px">
+          <div class="m-cta" style="background:linear-gradient(135deg,#60BB46,#4CAF50)">
+            <svg viewBox="0 0 24 24" stroke="white" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Pay with eSewa · Rs. 375</span>
+          </div>
+          <div style="text-align:center;font-size:8px;color:var(--ink-50);margin-top:6px">256-bit SSL secured · Your data is safe</div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 06: CONFIRMATION ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>06</span> Confirmed</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span></div>
+        <div class="m-nav"><div></div><div class="m-nav-logo" style="font-size:13px">Order Confirmed</div><div></div></div>
+        <div class="m-conf-circle">✓</div>
+        <div class="m-conf-title">Order Placed!</div>
+        <div class="m-conf-sub">Payment received via eSewa</div>
+        <div class="m-oid-box">
+          <div><div class="m-oid-label">Order ID</div><div class="m-oid-val">#PKR-2024-0847</div></div>
+          <div class="m-copy-btn">Copy</div>
+        </div>
+        <div class="m-pickup-box">
+          <div class="m-pickup-t">Ready in ~12 minutes</div>
+          <div class="m-pickup-s">Show Order ID at counter · Skip the queue</div>
+        </div>
+        <div class="m-loy-box">
+          <div>
+            <div class="m-loy-t">Loyalty Points Earned</div>
+            <div style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--saffron)">+12 pts</div>
+          </div>
+          <div class="m-loy-btn">View</div>
+        </div>
+        <div class="m-act-row">
+          <div class="m-act-btn p">Reorder</div>
+          <div class="m-act-btn s">Back to Home</div>
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 07: SUBSCRIPTION ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>07</span> Subscription</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span></div>
+        <div class="m-nav"><div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></div><div class="m-nav-logo" style="font-size:13px">Monthly Plans</div><div></div></div>
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=440&h=100&fit=crop&q=80" style="width:100%;height:80px;object-fit:cover;display:block" alt>
+        <div style="padding:8px 12px 4px">
+          <div style="font-family:var(--display);font-size:14px;font-weight:700;color:var(--ink)">Save on daily essentials</div>
+          <div style="font-size:10px;color:var(--ink-50);margin-top:2px">Transparent billing · Cancel anytime</div>
+        </div>
+        <div class="m-plan g">
+          <div class="m-plan-row"><div><div class="m-plan-name">Bread Bundle</div><div class="m-plan-desc">Daily fresh bread delivered</div><div class="m-plan-price g">Rs. 800<span style="font-size:10px;font-weight:400;color:var(--ink-50)">/mo</span></div></div><div class="m-plan-sel">Select</div></div>
+        </div>
+        <div class="m-plan b">
+          <div class="m-plan-row"><div><div class="m-plan-name">Milk + Bread</div><div class="m-plan-desc">Milk &amp; bread daily bundle</div><div class="m-plan-price b">Rs. 1,200<span style="font-size:10px;font-weight:400;color:var(--ink-50)">/mo</span></div></div><div class="m-plan-sel">Select</div></div>
+        </div>
+        <div class="m-plan s">
+          <div class="m-plan-row"><div><div class="m-plan-name">Family Pack</div><div class="m-plan-desc">Full breakfast set daily</div><div class="m-plan-price s">Rs. 2,000<span style="font-size:10px;font-weight:400;color:var(--ink-50)">/mo</span></div></div><div class="m-plan-sel" style="background:var(--brick)">Select</div></div>
+        </div>
+        <div style="padding:6px 12px 10px;font-size:9px;color:var(--ink-50);display:flex;align-items:center;gap:5px">
+          <svg viewBox="0 0 24 24" stroke="var(--forest)" stroke-width="2" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          No hidden fees · Cancel anytime from your profile
+        </div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── SCREEN 08: PROFILE ─── -->
+  <div class="mobile-unit">
+    <div class="mobile-unit-label"><span>08</span> Profile</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="m-status"><span class="m-status-time">9:41</span></div>
+        <div class="m-nav"><div></div><div class="m-nav-logo" style="font-size:13px">Profile</div><div style="width:26px;height:26px;background:var(--ink-08);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" stroke="var(--ink-80)" stroke-width="1.8" width="14" height="14"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div></div>
+        <img class="m-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&q=80" alt="Rajesh">
+        <div class="m-profile-name">Rajesh Gurung</div>
+        <div class="m-profile-email">rajesh@gmail.com · Pokhara</div>
+        <div class="m-lang-box">
+          <div class="m-lang-label">Language</div>
+          <div class="m-lang-btns"><div class="m-lang-btn on">English</div><div class="m-lang-btn off">नेपाली</div></div>
+        </div>
+        <div style="margin:0 12px 10px;background:var(--saffron-lt);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--saffron)">
+          <div><div style="font-size:9px;font-weight:700;color:var(--saffron);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Loyalty Points</div><div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--saffron)">248 <span style="font-size:12px;font-weight:400">pts</span></div></div>
+          <div class="m-loy-btn">Redeem</div>
+        </div>
+        <div class="m-prof-item"><div class="m-prof-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="m-prof-label">Order History</div><svg viewBox="0 0 24 24" stroke="var(--ink-20)" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="m-prof-item"><div class="m-prof-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-prof-label">Saved Addresses</div><svg viewBox="0 0 24 24" stroke="var(--ink-20)" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="m-prof-item"><div class="m-prof-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="m-prof-label">Payment Methods</div><svg viewBox="0 0 24 24" stroke="var(--ink-20)" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="m-prof-item"><div class="m-prof-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="m-prof-label">Help &amp; Support</div><svg viewBox="0 0 24 24" stroke="var(--ink-20)" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+  </div>
+
+  </div><!-- /mobile-grid -->
+  </div><!-- /tab-pane -->
+</div><!-- /mobile-showcase -->
+</div>
+
+<!-- ════════════════════════════════════════
+     WEB HI-FI
+════════════════════════════════════════ -->
+<div id="web">
+<div style="background:var(--ink);padding:48px 48px 36px">
+  <div class="sh-eyebrow">Section 02</div>
+  <div class="sh-title" style="font-size:clamp(22px,3vw,32px)">Hi-Fi Web Pages</div>
+  <div class="sh-sub">8 desktop web pages matching the mobile flow — full brand application, real photography, and component hierarchy.</div>
+</div>
+<div class="web-showcase">
+<div class="web-screens-grid">
+
+<!-- ─── WEB 01: HOME ─── -->
+<div>
+  <div class="web-screen-label"><span>01</span> Home / Landing Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link on">Home</div><div class="w-nav-link">Menu</div><div class="w-nav-link">Subscribe</div><div class="w-nav-link">About</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-search-field"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span>Search menu…</span></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">0</div><span>Cart</span></div></div></div>
+    <div class="w-hero"><div class="w-hero-content"><div class="w-hero-eyebrow">Pokhara's Freshest Bakery</div><div class="w-hero-title">Baked fresh,<br>every <em>morning.</em></div><div class="w-hero-desc">Order ahead in Nepali or English, pay with eSewa or Khalti, skip the queue. Real ingredients, real allergen info.</div><div class="w-hero-btns"><div class="w-btn-primary"><svg viewBox="0 0 24 24" stroke="white" stroke-width="2" width="16" height="16"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>Browse Menu</div><div class="w-btn-secondary">Subscribe Plans</div></div></div><div class="w-hero-img"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=480&fit=crop&q=85" alt="bakery"><div class="w-hero-img-overlay"></div></div></div>
+    <div class="w-trust-bar"><div class="w-trust-item"><div class="w-trust-dot"></div><div class="w-trust-text">Baked fresh daily</div></div><div class="w-trust-item"><div class="w-trust-dot"></div><div class="w-trust-text">eSewa &amp; Khalti accepted</div></div><div class="w-trust-item"><div class="w-trust-dot"></div><div class="w-trust-text">Allergen info on every item</div></div><div class="w-trust-item"><div class="w-trust-dot"></div><div class="w-trust-text">Nepali / English interface</div></div></div>
+    <div class="w-cat-strip"><div class="w-cat sel"><img class="w-cat-icon" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=64&h=64&fit=crop&q=80" alt><div><div class="w-cat-name">All Items</div><div class="w-cat-count">48 products</div></div></div><div class="w-cat"><img class="w-cat-icon" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=64&h=64&fit=crop&q=80" alt><div><div class="w-cat-name">Cakes</div><div class="w-cat-count">12 products</div></div></div><div class="w-cat"><img class="w-cat-icon" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=64&h=64&fit=crop&q=80" alt><div><div class="w-cat-name">Bread</div><div class="w-cat-count">14 products</div></div></div><div class="w-cat"><img class="w-cat-icon" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=64&h=64&fit=crop&q=80" alt><div><div class="w-cat-name">Pastries</div><div class="w-cat-count">10 products</div></div></div><div class="w-cat"><img class="w-cat-icon" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=64&h=64&fit=crop&q=80" alt><div><div class="w-cat-name">Drinks</div><div class="w-cat-count">8 products</div></div></div></div>
+    <div class="w-products-section"><div class="w-products-header"><div class="w-products-title">Fresh Today</div><div class="w-products-link">View All Items →</div></div><div class="w-prod-grid"><div class="w-prod-card"><img class="w-prod-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=320&fit=crop&q=80" alt><div class="w-prod-body"><div class="w-prod-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag a">Egg-Free</span></div><div class="w-prod-name">Glazed Doughnut</div><div class="w-prod-sub">Classic ring, vanilla glaze</div><div class="w-prod-foot"><span class="w-prod-price">Rs. 80</span><div class="w-prod-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add</div></div></div></div><div class="w-prod-card"><img class="w-prod-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=320&fit=crop&q=80" alt><div class="w-prod-body"><div class="w-prod-tags"><span class="w-prod-tag f">Fresh</span></div><div class="w-prod-name">Chocolate Layer Cake</div><div class="w-prod-sub">Belgian chocolate ganache</div><div class="w-prod-foot"><span class="w-prod-price">Rs. 450</span><div class="w-prod-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add</div></div></div></div><div class="w-prod-card"><img class="w-prod-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=320&fit=crop&q=80" alt><div class="w-prod-body"><div class="w-prod-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag n" style="background:var(--slate-lt);color:var(--slate)">Vegan</span></div><div class="w-prod-name">Multigrain Bread</div><div class="w-prod-sub">Whole wheat, seeds blend</div><div class="w-prod-foot"><span class="w-prod-price">Rs. 120</span><div class="w-prod-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add</div></div></div></div><div class="w-prod-card"><img class="w-prod-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=320&fit=crop&q=80" alt><div class="w-prod-body"><div class="w-prod-tags"><span class="w-prod-tag f">Fresh</span></div><div class="w-prod-name">Apple Cinnamon Pastry</div><div class="w-prod-sub">Flaky puff, apple filling</div><div class="w-prod-foot"><span class="w-prod-price">Rs. 95</span><div class="w-prod-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add</div></div></div></div></div></div>
+    <div class="w-footer"><div><div class="w-footer-brand-name">Pauwa <em>Bakery</em></div><div class="w-footer-desc">Pokhara's freshest artisan bakery. Baked every morning with local ingredients. Order online, pick up fast.</div></div><div><div class="w-footer-col-title">Menu</div><div class="w-footer-link">Cakes &amp; Pastries</div><div class="w-footer-link">Breads</div><div class="w-footer-link">Drinks</div><div class="w-footer-link">Subscribe</div></div><div><div class="w-footer-col-title">Info</div><div class="w-footer-link">About Us</div><div class="w-footer-link">Allergen Guide</div><div class="w-footer-link">Contact</div><div class="w-footer-link">FAQ</div></div><div><div class="w-footer-col-title">Legal</div><div class="w-footer-link">Privacy Policy</div><div class="w-footer-link">Terms of Use</div><div class="w-footer-link">Refund Policy</div></div></div>
+    <div class="w-footer-bottom"><div class="w-footer-copy">© 2024 Pauwa Bakery, Pokhara. All rights reserved.</div><div class="w-footer-payment-icons"><div class="w-pay-logo-sm esewa">eSewa</div><div class="w-pay-logo-sm khalti">Khalti</div></div></div>
+  </div>
+</div>
+
+<!-- ─── WEB 02: MENU ─── -->
+<div>
+  <div class="web-screen-label"><span>02</span> Menu / Browse Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/menu</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link on">Menu</div><div class="w-nav-link">Subscribe</div><div class="w-nav-link">About</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-search-field"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span>Search…</span></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">2</div><span>Cart</span></div></div></div>
+    <div class="w-filter-bar"><div class="w-filter-label">Filter:</div><div class="w-fchip on">All</div><div class="w-fchip off">Fresh Today</div><div class="w-fchip off">Vegetarian</div><div class="w-fchip off">Nut-Free</div><div class="w-fchip off">Egg-Free</div><div class="w-fchip-space"></div><div class="w-sort-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>Sort: Popular</div></div>
+    <div class="w-menu-layout">
+      <div class="w-sidebar">
+        <div class="w-sidebar-sec"><div class="w-sidebar-title">Category</div><div class="w-sidebar-item"><div class="w-check on"></div><div class="w-sidebar-label">All Items</div><div class="w-sidebar-count">48</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Cakes</div><div class="w-sidebar-count">12</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Breads</div><div class="w-sidebar-count">14</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Pastries</div><div class="w-sidebar-count">10</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Drinks</div><div class="w-sidebar-count">8</div></div></div>
+        <div class="w-sidebar-sec"><div class="w-sidebar-title">Price Range</div><div class="w-price-slider"><div class="w-price-track"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--ink-50);margin-top:4px"><span>Rs. 50</span><span>Rs. 800</span></div></div>
+        <div class="w-sidebar-sec"><div class="w-sidebar-title">Dietary</div><div class="w-sidebar-item"><div class="w-check on"></div><div class="w-sidebar-label">Fresh Today</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Nut-Free</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Egg-Free</div></div><div class="w-sidebar-item"><div class="w-check"></div><div class="w-sidebar-label">Vegan</div></div></div>
+      </div>
+      <div class="w-menu-content">
+        <div class="w-menu-items">
+          <div class="w-menu-item"><img class="w-menu-item-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=180&fit=crop&q=80" alt><div class="w-menu-item-info"><div class="w-menu-item-name">Glazed Doughnut</div><div class="w-menu-item-desc">Classic ring doughnut with vanilla glaze. Made fresh every morning using wheat flour and vegetable oil.</div><div class="w-menu-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag a">Egg-Free</span><span class="w-prod-tag a" style="background:var(--slate-lt);color:var(--slate)">No Nuts</span></div></div><div class="w-menu-item-actions"><div class="w-menu-item-price">Rs. 80</div><div class="w-menu-item-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add to Cart</div></div></div>
+          <div class="w-menu-item"><img class="w-menu-item-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=180&fit=crop&q=80" alt><div class="w-menu-item-info"><div class="w-menu-item-name">Chocolate Layer Cake</div><div class="w-menu-item-desc">Belgian chocolate ganache between three moist sponge layers. Contains dairy and eggs.</div><div class="w-menu-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag n">Contains Dairy</span></div></div><div class="w-menu-item-actions"><div class="w-menu-item-price">Rs. 450</div><div class="w-menu-item-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add to Cart</div></div></div>
+          <div class="w-menu-item"><img class="w-menu-item-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&h=180&fit=crop&q=80" alt><div class="w-menu-item-info"><div class="w-menu-item-name">Multigrain Bread Loaf</div><div class="w-menu-item-desc">Whole wheat, sunflower seeds, and flaxseeds. 100% vegan. No added preservatives.</div><div class="w-menu-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag a" style="background:var(--slate-lt);color:var(--slate)">Vegan</span></div></div><div class="w-menu-item-actions"><div class="w-menu-item-price">Rs. 120</div><div class="w-menu-item-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add to Cart</div></div></div>
+          <div class="w-menu-item"><img class="w-menu-item-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=180&fit=crop&q=80" alt><div class="w-menu-item-info"><div class="w-menu-item-name">Apple Cinnamon Pastry</div><div class="w-menu-item-desc">Flaky puff pastry filled with caramelised apple and cinnamon. Best served warm.</div><div class="w-menu-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag n">Contains Gluten</span></div></div><div class="w-menu-item-actions"><div class="w-menu-item-price">Rs. 95</div><div class="w-menu-item-add"><svg viewBox="0 0 24 24" stroke-width="2.5" width="12" height="12"><path d="M12 5v14M5 12h14"/></svg>Add to Cart</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEB 03: ITEM DETAIL ─── -->
+<div>
+  <div class="web-screen-label"><span>03</span> Item Detail Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/menu/glazed-doughnut</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link on">Menu</div><div class="w-nav-link">Subscribe</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">2</div><span>Cart</span></div></div></div>
+    <div class="w-detail-grid">
+      <div class="w-detail-gallery"><img class="w-detail-main-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=540&fit=crop&q=85" alt><div class="w-detail-thumbs"><img class="w-detail-thumb on" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=112&h=112&fit=crop&q=80" alt><img class="w-detail-thumb" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=112&h=112&fit=crop&q=80" alt><img class="w-detail-thumb" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=112&h=112&fit=crop&q=80" alt><img class="w-detail-thumb" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=112&h=112&fit=crop&q=80" alt></div></div>
+      <div class="w-detail-info">
+        <div><div class="w-detail-name">Glazed Doughnut</div><div class="w-detail-sub">Pauwa Bakery Classic · Baked fresh every morning</div></div>
+        <div class="w-detail-badges"><div class="w-det-badge f">Fresh Today</div><div class="w-det-badge a">No Nuts</div><div class="w-det-badge n">Egg-Free</div></div>
+        <div class="w-detail-price">Rs. 80</div>
+        <div><div class="w-detail-section-t">Ingredients &amp; Allergens</div><div class="w-ing-box">Wheat flour, sugar, vegetable oil, yeast, salt, vanilla extract, food-grade glaze. <strong style="color:var(--brick)">Contains: Gluten, Dairy.</strong> Free from nuts and eggs. Suitable for vegetarians.</div></div>
+        <div><div class="w-detail-section-t">Size</div><div class="w-size-opts"><div class="w-size-opt on">Regular</div><div class="w-size-opt off">Large</div><div class="w-size-opt off">Box of 6</div></div></div>
+        <div><div class="w-detail-section-t">Add-ons</div><div class="w-addons"><div class="w-addon on">Extra Glaze</div><div class="w-addon">Sprinkles</div><div class="w-addon">No Topping</div><div class="w-addon">Chocolate Dip</div></div></div>
+        <div class="w-detail-cta-row"><div class="w-qty-ctrl"><div class="w-qty-b">−</div><div class="w-qty-n">1</div><div class="w-qty-b">+</div></div><div class="w-cart-cta"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Add to Cart — Rs. 80</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEB 04: CART ─── -->
+<div>
+  <div class="web-screen-label"><span>04</span> Cart Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/cart</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link">Menu</div><div class="w-nav-link">Subscribe</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">3</div><span>Cart</span></div></div></div>
+    <div class="w-cart-layout">
+      <div class="w-cart-main">
+        <div class="w-cart-title">Your Cart (3 items)</div>
+        <div class="w-cart-item-row"><img class="w-cart-item-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=180&h=180&fit=crop&q=80" alt><div class="w-cart-item-info"><div class="w-cart-item-name">Glazed Doughnut × 2</div><div class="w-cart-item-sub">Regular size · Extra Glaze add-on</div><div class="w-cart-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag a">No Nuts</span></div></div><div class="w-cart-item-actions"><div class="w-cart-price">Rs. 160</div><div class="w-cart-qty"><div class="w-cqb">−</div><div class="w-cqn">2</div><div class="w-cqb">+</div></div><div class="w-remove-btn">Remove</div></div></div>
+        <div class="w-cart-item-row"><img class="w-cart-item-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=180&h=180&fit=crop&q=80" alt><div class="w-cart-item-info"><div class="w-cart-item-name">Apple Cinnamon Pastry</div><div class="w-cart-item-sub">Standard · Warm serving</div><div class="w-cart-item-tags"><span class="w-prod-tag f">Fresh</span></div></div><div class="w-cart-item-actions"><div class="w-cart-price">Rs. 95</div><div class="w-cart-qty"><div class="w-cqb">−</div><div class="w-cqn">1</div><div class="w-cqb">+</div></div><div class="w-remove-btn">Remove</div></div></div>
+        <div class="w-cart-item-row"><img class="w-cart-item-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=180&h=180&fit=crop&q=80" alt><div class="w-cart-item-info"><div class="w-cart-item-name">Multigrain Bread Loaf</div><div class="w-cart-item-sub">Whole loaf · No slicing</div><div class="w-cart-item-tags"><span class="w-prod-tag f">Fresh</span><span class="w-prod-tag n" style="background:var(--slate-lt);color:var(--slate)">Vegan</span></div></div><div class="w-cart-item-actions"><div class="w-cart-price">Rs. 120</div><div class="w-cart-qty"><div class="w-cqb">−</div><div class="w-cqn">1</div><div class="w-cqb">+</div></div><div class="w-remove-btn">Remove</div></div></div>
+      </div>
+      <div class="w-cart-sidebar">
+        <div class="w-order-summary-title">Order Summary</div>
+        <div class="w-sum-row"><span class="w-sum-label">Subtotal (3 items)</span><span class="w-sum-val">Rs. 375</span></div>
+        <div class="w-sum-row"><span class="w-sum-label">Pickup fee</span><span class="w-sum-val" style="color:var(--forest)">Free</span></div>
+        <div class="w-sum-row total"><span class="w-sum-label">Total</span><span class="w-sum-val">Rs. 375</span></div>
+        <div class="w-sub-upsell"><div class="w-sub-upsell-t">Subscribe Monthly — Save 15%</div><div class="w-sub-upsell-s">Daily bread &amp; milk bundles from Rs. 800/mo. Cancel anytime.</div><div class="w-sub-upsell-btn">Add Subscription Plan</div></div>
+        <div class="w-checkout-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><polyline points="9 10 4 15 9 20"/><path d="M20 4v7a4 4 0 0 1-4 4H4"/></svg>Proceed to Checkout</div>
+        <div class="w-secure-note"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>256-bit SSL secured · Safe payments</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEB 05: PAYMENT ─── -->
+<div>
+  <div class="web-screen-label"><span>05</span> Payment Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/checkout/payment</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link">Menu</div></div><div class="w-nav-right"><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">3</div><span>Cart</span></div></div></div>
+    <div class="w-payment-layout">
+      <div class="w-payment-main">
+        <div class="w-steps"><div class="w-step done">1. Cart ✓</div><div class="w-step active">2. Payment</div><div class="w-step next">3. Confirm</div></div>
+        <div class="w-payment-section-t">Choose Payment Method</div>
+        <div class="w-pay-methods">
+          <div class="w-pay-meth active"><div class="w-pay-meth-logo esewa">eSewa</div><div><div class="w-pay-meth-name">eSewa Digital Wallet</div><div class="w-pay-meth-sub">Instant payment · No extra charge</div></div><div class="w-pay-radio on"></div></div>
+          <div class="w-pay-meth"><div class="w-pay-meth-logo khalti">Khalti</div><div><div class="w-pay-meth-name">Khalti Wallet</div><div class="w-pay-meth-sub">Digital wallet · Instant</div></div><div class="w-pay-radio"></div></div>
+          <div class="w-pay-meth"><div class="w-pay-meth-logo cod">Cash</div><div><div class="w-pay-meth-name">Cash on Pickup</div><div class="w-pay-meth-sub">Pay at the counter when you collect</div></div><div class="w-pay-radio"></div></div>
+        </div>
+        <div class="w-pay-form">
+          <div class="w-pay-form-hd">eSewa Account Details</div>
+          <div class="w-form-grid"><div class="w-input-field"><div class="w-input-label">Phone</div><div class="w-input-val">98XXXXXXXX</div></div><div class="w-input-field"><div class="w-input-label">eSewa ID</div><div class="w-input-val">Rajesh G.</div></div></div>
+          <div class="w-ssl-badge"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="w-ssl-text">All transactions are 256-bit SSL encrypted. Your data is never stored.</span></div>
+        </div>
+      </div>
+      <div class="w-cart-sidebar">
+        <div class="w-order-summary-title">Order Summary</div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Glazed Doughnut × 2</div><span class="w-receipt-price">Rs. 160</span></div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Apple Pastry × 1</div><span class="w-receipt-price">Rs. 95</span></div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Multigrain Bread × 1</div><span class="w-receipt-price">Rs. 120</span></div>
+        <div class="w-sum-row total" style="margin-top:8px"><span class="w-sum-label">Total to Pay</span><span class="w-sum-val">Rs. 375</span></div>
+        <div class="w-checkout-btn" style="background:linear-gradient(135deg,#60BB46,#4CAF50)"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Confirm &amp; Pay with eSewa</div>
+        <div class="w-secure-note"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>SSL secured · Safe checkout</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEB 06: CONFIRMATION ─── -->
+<div>
+  <div class="web-screen-label"><span>06</span> Order Confirmation</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/order/confirmed</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link">Menu</div></div><div class="w-nav-right"><div class="w-cart-btn" style="background:var(--forest)"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Paid via eSewa</span></div></div></div>
+    <div class="w-conf-layout">
+      <div class="w-conf-main">
+        <div class="w-conf-icon-wrap">✓</div>
+        <div class="w-conf-title">Order Placed!</div>
+        <div class="w-conf-sub">Payment of Rs. 375 received successfully via eSewa.</div>
+        <div class="w-conf-cards">
+          <div class="w-conf-card grn"><div class="w-conf-card-t">Order Details</div><div class="w-oid">#PKR-2024-0847</div><div class="w-conf-info"><div class="w-conf-info-lbl">Placed at</div><div class="w-conf-info-val">9:48 AM, 3 Apr 2024</div></div><div class="w-conf-info"><div class="w-conf-info-lbl">Payment</div><div class="w-conf-info-val">eSewa · Rs. 375</div></div></div>
+          <div class="w-conf-card gold"><div class="w-conf-card-t">Pickup Information</div><div class="w-conf-info"><div class="w-conf-info-lbl">Location</div><div class="w-conf-info-val">Pauwa Bakery, Birauta, Pokhara</div></div><div class="w-conf-info"><div class="w-conf-info-lbl">Est. ready</div><div class="w-conf-info-val">~12 minutes from now</div></div><div class="w-pickup-chip"><svg viewBox="0 0 24 24" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Show Order ID at counter · Skip the queue</div></div>
+          <div class="w-conf-card blu"><div class="w-conf-card-t">Next Steps</div><div class="w-conf-info"><div class="w-conf-info-lbl">1.</div><div class="w-conf-info-val">Head to Pauwa Bakery, Birauta</div></div><div class="w-conf-info"><div class="w-conf-info-lbl">2.</div><div class="w-conf-info-val">Show your Order ID #PKR-2024-0847</div></div><div class="w-conf-info"><div class="w-conf-info-lbl">3.</div><div class="w-conf-info-val">Collect your fresh items and enjoy!</div></div></div>
+        </div>
+        <div class="w-conf-actions"><div class="w-conf-btn p">Reorder These Items</div><div class="w-conf-btn s">Back to Home</div><div class="w-conf-btn s">View Order History</div></div>
+      </div>
+      <div class="w-conf-sidebar">
+        <div class="w-receipt-title">Your Receipt</div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Glazed Doughnut × 2</div><span class="w-receipt-price">Rs. 160</span></div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Apple Cinnamon Pastry</div><span class="w-receipt-price">Rs. 95</span></div>
+        <div class="w-receipt-item"><img class="w-receipt-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=80&h=80&fit=crop&q=80" alt><div class="w-receipt-name">Multigrain Bread Loaf</div><span class="w-receipt-price">Rs. 120</span></div>
+        <div class="w-sum-row total" style="margin-top:8px"><span class="w-sum-label">Total Paid</span><span class="w-sum-val">Rs. 375</span></div>
+        <div class="w-loy-progress-box"><div class="w-loy-header"><div class="w-loy-title">Loyalty Points Earned</div></div><div class="w-loy-pts">+12 pts</div><div class="w-loy-bar"><div class="w-loy-fill"></div></div><div class="w-loy-sub">248 / 500 pts to next reward</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEB 07: SUBSCRIPTION ─── -->
+<div>
+  <div class="web-screen-label"><span>07</span> Subscription Plans</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/subscribe</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link">Menu</div><div class="w-nav-link on">Subscribe</div><div class="w-nav-link">About</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">0</div><span>Cart</span></div></div></div>
+    <div class="w-sub-hero"><div><div class="w-sub-hero-eyebrow">Monthly Subscription Plans</div><div class="w-sub-hero-title">Daily essentials,<br>delivered to your door.</div><div class="w-sub-hero-desc">Subscribe to our monthly bundles for fresh bread, milk, and breakfast items. Save up to 15% on every order. Cancel anytime.</div></div><img class="w-sub-hero-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=240&fit=crop&q=80" alt></div>
+    <div class="w-plans-grid">
+      <div class="w-plan-card"><div class="w-plan-header g"><div class="w-plan-name">Bread Bundle</div><div class="w-plan-price g">Rs. 800 <span class="w-plan-period">/month</span></div></div><div class="w-plan-body"><div class="w-plan-feature"><div class="w-plan-check g">✓</div><div class="w-plan-feature-txt">Daily fresh multigrain bread loaf</div></div><div class="w-plan-feature"><div class="w-plan-check g">✓</div><div class="w-plan-feature-txt">Save 15% vs individual orders</div></div><div class="w-plan-feature"><div class="w-plan-check g">✓</div><div class="w-plan-feature-txt">Flexible delivery schedule</div></div></div><div class="w-plan-cta g">Select Bread Bundle</div></div>
+      <div class="w-plan-card featured"><div class="w-plan-featured-badge">Most Popular</div><div class="w-plan-header gold"><div class="w-plan-name">Milk + Bread</div><div class="w-plan-price gold">Rs. 1,200 <span class="w-plan-period">/month</span></div></div><div class="w-plan-body"><div class="w-plan-feature"><div class="w-plan-check gold">✓</div><div class="w-plan-feature-txt">Fresh milk + multigrain bread daily</div></div><div class="w-plan-feature"><div class="w-plan-check gold">✓</div><div class="w-plan-feature-txt">Save up to 20% vs individual</div></div><div class="w-plan-feature"><div class="w-plan-check gold">✓</div><div class="w-plan-feature-txt">Priority morning delivery</div></div><div class="w-plan-feature"><div class="w-plan-check gold">✓</div><div class="w-plan-feature-txt">Pause or cancel anytime</div></div></div><div class="w-plan-cta gold">Select Milk + Bread</div></div>
+      <div class="w-plan-card"><div class="w-plan-header b"><div class="w-plan-name">Family Pack</div><div class="w-plan-price b">Rs. 2,000 <span class="w-plan-period">/month</span></div></div><div class="w-plan-body"><div class="w-plan-feature"><div class="w-plan-check b">✓</div><div class="w-plan-feature-txt">Complete breakfast set daily</div></div><div class="w-plan-feature"><div class="w-plan-check b">✓</div><div class="w-plan-feature-txt">Bread, milk, eggs &amp; pastry</div></div><div class="w-plan-feature"><div class="w-plan-check b">✓</div><div class="w-plan-feature-txt">Custom item preferences</div></div><div class="w-plan-feature"><div class="w-plan-check b">✓</div><div class="w-plan-feature-txt">Cancel anytime, no penalty</div></div></div><div class="w-plan-cta b">Select Family Pack</div></div>
+    </div>
+    <div class="w-sub-notes"><div class="w-sub-note-item"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div class="w-sub-note-txt">Secure payments</div></div><div class="w-sub-note-item"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><div class="w-sub-note-txt">Cancel anytime</div></div><div class="w-sub-note-item"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><div class="w-sub-note-txt">Transparent billing</div></div><div style="margin-left:8px;font-size:12px;color:var(--ink-50)">No hidden fees · Full preview before every charge · One-click cancel from your profile</div></div>
+  </div>
+</div>
+
+<!-- ─── WEB 08: PROFILE ─── -->
+<div>
+  <div class="web-screen-label"><span>08</span> User Profile Page</div>
+  <div class="web-frame">
+    <div class="browser-bar"><div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div><div class="b-url"><svg class="b-url-icon" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="b-url-text">bakery.com.np/profile</span></div></div>
+    <div class="w-nav"><div class="w-logo">Pauwa <em>Bakery</em></div><div class="w-nav-links"><div class="w-nav-link">Home</div><div class="w-nav-link">Menu</div><div class="w-nav-link">Subscribe</div></div><div class="w-nav-right"><div class="w-lang"><div class="w-lang-btn on">EN</div><div class="w-lang-btn off">NP</div></div><div class="w-cart-btn"><svg viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="w-cart-count">0</div><span>Cart</span></div></div></div>
+    <div class="w-profile-layout">
+      <div class="w-profile-sidebar">
+        <div class="w-profile-avatar-wrap"><img class="w-profile-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&q=80" alt><div class="w-profile-name">Rajesh Gurung</div><div class="w-profile-email">rajesh@gmail.com</div></div>
+        <div class="w-profile-nav-item on"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="w-profile-nav-label">Personal Info</div></div>
+        <div class="w-profile-nav-item"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="w-profile-nav-label">Order History</div></div>
+        <div class="w-profile-nav-item"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg></div><div class="w-profile-nav-label">Saved Addresses</div></div>
+        <div class="w-profile-nav-item"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="w-profile-nav-label">Payment Methods</div></div>
+        <div class="w-profile-nav-item"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="w-profile-nav-label">Subscriptions</div></div>
+        <div class="w-profile-nav-item"><div class="w-profile-nav-ico"><svg viewBox="0 0 24 24" stroke-width="1.8" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="w-profile-nav-label">Help &amp; Support</div></div>
+      </div>
+      <div class="w-profile-content">
+        <div class="w-profile-section">
+          <div class="w-profile-section-hd"><div class="w-profile-section-title">Personal Information</div><div class="w-edit-btn">Edit</div></div>
+          <div class="w-form-grid-2">
+            <div class="w-profile-field"><div class="w-profile-field-label">First Name</div><div class="w-profile-field-val">Rajesh</div></div>
+            <div class="w-profile-field"><div class="w-profile-field-label">Last Name</div><div class="w-profile-field-val">Gurung</div></div>
+            <div class="w-profile-field"><div class="w-profile-field-label">Phone</div><div class="w-profile-field-val">+977 98XXXXXXXX</div></div>
+            <div class="w-profile-field"><div class="w-profile-field-label">Email</div><div class="w-profile-field-val">rajesh@gmail.com</div></div>
+          </div>
+        </div>
+        <div class="w-profile-section">
+          <div class="w-profile-section-hd"><div class="w-profile-section-title">Language Preference</div></div>
+          <div class="w-lang-options"><div class="w-lang-opt on">English</div><div class="w-lang-opt off">नेपाली</div></div>
+        </div>
+        <div class="w-profile-section">
+          <div class="w-profile-section-hd"><div class="w-profile-section-title">Loyalty Points</div><div class="w-redeem-btn">Redeem Points</div></div>
+          <div class="w-loyalty-row">
+            <div class="w-loyalty-big">248</div>
+            <div class="w-loyalty-info"><div class="w-loyalty-sub">Points accumulated from your orders</div><div class="w-loyalty-bar-wrap"><div class="w-loyalty-fill"></div></div><div class="w-loyalty-note">248 / 500 pts to your next reward discount</div></div>
+          </div>
+        </div>
+        <div class="w-profile-section">
+          <div class="w-profile-section-hd"><div class="w-profile-section-title">Recent Orders</div><div class="w-edit-btn">View All</div></div>
+          <div class="w-order-history-item"><img class="w-order-history-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=88&h=88&fit=crop&q=80" alt><div class="w-order-history-info"><div class="w-order-history-name">Glazed Doughnut × 2, Apple Pastry, Bread</div><div class="w-order-history-sub">#PKR-2024-0847 · 3 Apr 2024 · eSewa</div></div><div class="w-order-history-price">Rs. 375</div><div class="w-reorder-btn">Reorder</div></div>
+          <div class="w-order-history-item"><img class="w-order-history-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=88&h=88&fit=crop&q=80" alt><div class="w-order-history-info"><div class="w-order-history-name">Chocolate Cake (whole), 2 Pastries</div><div class="w-order-history-sub">#PKR-2024-0821 · 28 Mar 2024 · Khalti</div></div><div class="w-order-history-price">Rs. 640</div><div class="w-reorder-btn">Reorder</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /web-screens-grid -->
+</div><!-- /web-showcase -->
+</div><!-- /web section -->
+
+<footer>
+  <div class="foot-l">
+    <strong>Pauwa Bakery — Hi-Fi Design · Pokhara, Nepal</strong>
+    8 Mobile Screens + 8 Web Pages · Brand color system · Real photography · Full visual hierarchy<br>
+    Google UX Design Certificate Portfolio · Built from Lo-Fi wireframes
+  </div>
+  <div class="foot-badge">Hi-Fi v1.0</div>
+</footer>
+
+<script>
+function switchTab(btn,pane){
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pane-'+pane).classList.add('active');
+}
+const links=document.querySelectorAll('.master-nav a');
+window.addEventListener('scroll',()=>{
+  ['mobile','web'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-80){
+      links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));
+    }
+  });
+});
+</script>
+</body>
+</html>
